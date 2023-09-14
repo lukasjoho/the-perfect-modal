@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   const { show, isOpen } = useModal();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex h-[100dvh] flex-col items-center justify-between p-24">
       <Button onClick={() => show(<MyModal />)}>Outside button</Button>
     </main>
   );

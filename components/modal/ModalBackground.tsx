@@ -14,7 +14,7 @@ export function ModalBackground({ children }: ModalBackgroundProps) {
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 w-screen h-screen flex z-50",
+        "fixed top-0 left-0 w-screen h-[100dvh] flex z-50",
         isDesktop && "px-16"
       )}
     >
