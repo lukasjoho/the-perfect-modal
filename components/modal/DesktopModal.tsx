@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ModalCloseButton } from "./ModalCloseButton";
 
 interface DesktopModalProps {
   children: React.ReactNode;
