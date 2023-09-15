@@ -12,12 +12,12 @@ export const ModalCloseButton = forwardRef<
   return (
     <Button
       ref={ref}
-      className={cn("z-10 p-0.5 h-auto group", className)}
+      className={cn("z-10 p-0.5 h-auto", className)}
       variant="ghost"
       onClick={() => hide()}
       {...props}
     >
-      <X className="w-4 h-4 transition duration-200 group-hover:rotate-90" />
+      <X className="w-4 h-4" />
     </Button>
   );
 });

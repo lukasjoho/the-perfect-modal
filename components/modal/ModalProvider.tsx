@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalContext } from "./ModalContext";
 import { AnimatePresence } from "framer-motion";
 import { ModalPortal } from "./ModalPortal";

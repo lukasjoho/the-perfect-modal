@@ -25,7 +25,7 @@ export function MobileModal({ windowSize, children }: MobileModalProps) {
     const offset = info.offset.y;
     const velocity = info.velocity.y;
     const modalHeight = ref.current?.getBoundingClientRect().height || 0;
-    if (offset > modalHeight / 2 || velocity > 500) {
+    if (offset > modalHeight / 4 || velocity > 300) {
       hide();
     }
   }
@@ -62,29 +62,29 @@ export function MobileModal({ windowSize, children }: MobileModalProps) {
         animate={"visible"}
         exit="hidden"
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute bottom-0 border border-b-0 rounded-t-lg bg-background overflow-scroll"
+        className="absolute bottom-0 border border-b-0 rounded-t-lg bg-background overflow-hidden"
         style={{
           maxHeight: windowSize.height! + 20,
-          boxShadow: `0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)`,
+          boxShadow: `0 -1px 10px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)`,
         }}
         drag="y"
         dragDirectionLock
-        // onDragStart={(event: any, info: PanInfo) => {
-        //   console.log("ID: ", event.target?.id);
-        //   if (event.target?.id == "modal-header") {
-        //     console.log("INSIDE");
-        //     (dragControls as any).componentControls.forEach((entry: any) => {
-        //       entry.stop(event, info);
-        //     });
-        //   }
-        // }}
-        dragListener={false}
+        onDragStart={(event: any, info: PanInfo) => {
+          console.log("ID: ", event.target?.id);
+          if (event.target?.id !== "modal-header") {
+            (dragControls as any).componentControls.forEach((entry: any) => {
+              entry.stop(event, info);
+            });
+          }
+        }}
+        dragListener={true}
         dragControls={dragControls}
         // onPointerDown={onDragStart}
-        // onDragEnd={handleDragEnd}
+        onDragEnd={handleDragEnd}
         dragElastic={{ top: 0, bottom: 1 }}
         dragConstraints={{ top: 0, bottom: 0 }}
       >
+        <MobileHandleBar />
         {children}
       </motion.div>
     </div>
@@ -94,5 +94,5 @@ export function MobileModal({ windowSize, children }: MobileModalProps) {
 export default MobileModal;
 
 const MobileHandleBar = () => (
-  <div className="bg-muted-foreground/50 h-1 w-9 rounded-full mx-auto sticky top-2 z-10 -mb-2" />
+  <div className="bg-muted-foreground/20 h-1 w-9 rounded-full mx-auto relative top-2 z-10 -mb-1 pointer-events-none" />
 );

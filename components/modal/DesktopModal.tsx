@@ -13,7 +13,7 @@ export function DesktopModal({ children }: DesktopModalProps) {
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       className="relative border rounded-lg min-w-[300px] max-h-[90%] overflow-scroll shadow-md max-w-[720px] self-center mx-auto"
     >
-      <div>{children}</div>
+      {children}
     </motion.div>
   );
 }
